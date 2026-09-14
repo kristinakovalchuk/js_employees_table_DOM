@@ -88,7 +88,7 @@ fields.forEach(([title, label2, type]) => {
   input.name = title;
   input.required = true;
 
-  labelform.textContent = `${label2}:`;
+  labelform.textContent = `${label2}: `;
 
   input.setAttribute('data-qa', title);
 
@@ -98,7 +98,7 @@ fields.forEach(([title, label2, type]) => {
     const officeLabel = document.createElement('label');
     const select = document.createElement('select');
 
-    officeLabel.textContent = 'Office:';
+    officeLabel.textContent = 'Office: ';
 
     select.name = 'office';
     select.setAttribute('data-qa', 'office');
@@ -166,6 +166,12 @@ form.addEventListener('submit', (e) => {
 
   if (name1.length < 4) {
     showNotification('Name must contain at least 4 characters', 'error');
+
+    return;
+  }
+
+  if (position.length === 0) {
+    showNotification('Position is required', 'error');
 
     return;
   }
